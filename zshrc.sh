@@ -43,12 +43,3 @@ export EDITOR=$(which vim)
 # Python virtualenvwrapper
 VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
 source /usr/local/bin/virtualenvwrapper.sh
-
-# Add ChefDK to path if it is installed.
-# if [[ -d '/opt/chefdk' ]]; then
-#   eval "$(chef shell-init zsh)"
-# fi
-export REGISTRY_CACHE=/Users/ndewing/.registry_cli_cache
-export REGISTRY_CREDENTIALS=/Users/ndewing/.registry_credentials_cache
-export REGISTRY_CLI_ENV=prd
-export IS_REGISTRY_TEAM=0

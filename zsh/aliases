@@ -1,0 +1,7 @@
+# .zsh/aliases
+
+alias sudo="sudo "
+alias grep="grep --color"
+alias ls="ls -G"
+alias ll="ls -lh"
+alias hist="history 0 | grep"
