@@ -1,0 +1,11 @@
+build-essential
+code
+curl
+file
+git
+gnome-tweaks
+slack-desktop
+tmux
+vim
+wireshark
+zsh
