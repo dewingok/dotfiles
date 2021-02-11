@@ -1,5 +1,5 @@
 [include]
-  path = ~/.git/config_local
+  path = ~/.git-local
 [user]
   name = Nick Dewing
 [core]

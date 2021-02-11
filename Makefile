@@ -20,5 +20,8 @@ install-brew:
 	sudo -v
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
-
+vscode:
+	for EXTENSION in $(shell cat installs/vscode-extensions); do \
+		code --install-extension $$EXTENSION; \
+	done
 
