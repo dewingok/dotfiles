@@ -8,7 +8,7 @@ else ifeq ($(UNAME), Linux)
   OS := linux
 endif
 
-.PHONY: linux
+.PHONY: linux vscode
 
 linux:
 	sudo apt update
@@ -25,3 +25,5 @@ vscode:
 		code --install-extension $$EXTENSION; \
 	done
 
+stow:
+	stow configs -t ~
