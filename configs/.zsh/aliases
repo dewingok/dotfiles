@@ -1,8 +1,14 @@
 # .zsh/aliases
 
+# sudo - now with aliases
 alias sudo="sudo "
+
+# Colorize output
 alias grep="grep --color"
-alias ls="ls -G"
+[ $MACOS ] && alias ls="ls -G"
+[ $LINUX ] && alias ls="ls --color"
+
 alias ll="ls -lh"
+
 alias hist="history 0 | grep"
 alias tokenz="source ~/.bin/aws_session_token"
