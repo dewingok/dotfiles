@@ -1,14 +1,26 @@
+# -*- mode: sh; -*-
 # .zsh/aliases
 
 # sudo - now with aliases
 alias sudo="sudo "
 
+[ $LINUX ] && [ -f /home/linuxbrew/.brew/bat ] && alias cat="bat"
+[ $LINUX ] && [ -f /home/linuxbrew/.brew/exa ] && alias ls="exa"
+[ $MACOS ] && [ -f /usr/local/bin/bat ] && alias cat="bat"
+[ $MACOS ] && [ -f /usr/local/bin/exa ] && alias ls="exa"
+
+# CyberArk break/fix 
+alias fixca="sudo chown ${USER}:admin /usr/local/bin"
+alias getoffmylawn="sudo kill -9 $(pgrep CyberArk)"
+
 # Colorize output
 alias grep="grep --color"
-[ $MACOS ] && alias ls="ls -G"
-[ $LINUX ] && alias ls="ls --color"
+# [ $MACOS ] && alias ls="ls -G"
+# [ $LINUX ] && alias ls="ls --color"
 
 alias ll="ls -lh"
 
+
 alias hist="history 0 | grep"
 alias tokenz="source ~/.bin/aws_session_token"
+
