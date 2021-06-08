@@ -3,3 +3,6 @@
 /ssh/*_rsa*
 /ssh/known_hosts
 
+# Homebrew
+Brewfile.lock.json
+
