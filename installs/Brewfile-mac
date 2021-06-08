@@ -1,3 +1,6 @@
+# Brewfile for casks, mas, and Mac only packages
+# vim: set ft=ruby
+
 tap "homebrew/cask"
 
 cask "brave-browser"
