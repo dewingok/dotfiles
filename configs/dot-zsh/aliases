@@ -1,26 +1,35 @@
 # -*- mode: sh; -*-
+# vim: ft=sh
 # .zsh/aliases
 
-# sudo - now with aliases
+if command -v brew; then
+    BREW_PATH="$(brew --prefix)/bin"
+fi
+
+# sudo - now with aliases!
 alias sudo="sudo "
 
-[ $LINUX ] && [ -f /home/linuxbrew/.brew/bat ] && alias cat="bat"
-[ $LINUX ] && [ -f /home/linuxbrew/.brew/exa ] && alias ls="exa"
-[ $MACOS ] && [ -f /usr/local/bin/bat ] && alias cat="bat"
-[ $MACOS ] && [ -f /usr/local/bin/exa ] && alias ls="exa"
+# Rust tools
+[ -f ${BREW_PATH}/bat ] && alias cat="bat" 
+[ -f ${BREW_PATH}/fd ] && alias find="fd"
 
-# CyberArk break/fix 
-alias fixca="sudo chown ${USER}:admin /usr/local/bin"
-alias getoffmylawn="sudo kill -9 $(pgrep CyberArk)"
-
-# Colorize output
-alias grep="grep --color"
-# [ $MACOS ] && alias ls="ls -G"
-# [ $LINUX ] && alias ls="ls --color"
-
+# ls aliases
+if [ -f ${BREW_PATH}/exa ]; then
+    alias ls="exa"
+else
+    [ $MACOS ] && alias ls="ls -G"
+    [ $LINUX ] && alias ls="ls --color"
+fi
 alias ll="ls -lh"
 
+# Colorize grep output - switch to rg?
+alias grep="grep --color"
 
 alias hist="history 0 | grep"
 alias tokenz="source ~/.bin/aws_session_token"
 
+# CyberArk break/fix 
+if command -v CyberArkEPM; then
+    alias fixca="sudo chown ${USER}:admin /usr/local/bin"
+    alias getoffmylawn="sudo kill -9 $(pgrep CyberArk)"
+fi

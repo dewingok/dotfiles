@@ -1,3 +1,4 @@
+brave-browser
 build-essential
 code
 curl

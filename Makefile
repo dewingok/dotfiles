@@ -17,6 +17,7 @@ linux-apt:
 	sudo apt upgrade -y
 	sudo apt autoclean
 	sudo apt autoremove
+	< installs/apt-packages.txt xargs sudo apt install -y
 
 linux-brave:
 	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -

@@ -1,6 +1,8 @@
 # -*- mode: sh; -*-
+# vim: ft=sh
 # .zsh/functions
 
+# Preform reverse lookup on IP returned from 'host'
 rhost () {
   host_result=$(host $1)
   print "${host_result}"
@@ -8,14 +10,14 @@ rhost () {
   host ${host_ip}
 }
 
+# For looking over a file domain names - used to check DNS changes
 hloop () {
-  for wip in $(cat $1); do
-    echo "% host $wip"
-    host $wip
-    echo '=-=-=-=-=-='
+  for hostname in $(cat $1); do
+    echo "### ${hostname} ###"
+    host ${hostname}
   done
 }
 
-qssl() {
+ossl() {
   echo | openssl s_client -connect ${1}:443
 }
