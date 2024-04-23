@@ -37,16 +37,6 @@ stow: dirs
 	stow configs -t ~ --dotfiles
 	stow configs-ssh -t ~/.ssh 
 
-vscode:
-	for EXTENSION in $(shell cat installs/vscode-extensions); do \
-		code --install-extension $$EXTENSION; \
-	done
-
-vim:
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	vim +PlugInstall +qall +silent
-
 stow-delete:
 	stow -D configs -t ~ --dotfiles
 	stow -D configs-ssh -t ~/.ssh
