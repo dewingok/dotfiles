@@ -1,56 +1,44 @@
 [include]
-  path = ~/.git-local
-[user]
-	name = Nick Dewing
-[core]
-  editor = vim
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-[help]
-  autocorrect = 0
-[merge]
-  tool = vimdiff
+path = ~/.config/git/config.local
+
+[init]
+defaultBranch = main
+
 [push]
-  default = simple
-[status]
-  relativePaths = false
+default = current
+
 [color]
-  ui = true
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  updated = yellow
-  changed = green
-  untracked = cyan
-  branch = magenta
-  nobranch = red
-[color "diff"]
-  whitespace = red reverse
-[alias]
-  st = status --short --branch -unormal
-  stp = status --porcelain -unormal
-  stn = status
-  ci = commit -a
-  br = branch
-  co = checkout
-  vdf = !gitvimdiff
-  df = diff --word-diff
-  logdiff = log -p --summary
-  difflog = log -p --summary
-  lg = log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%an%C(reset) %C(cyan)%cr%C(reset) %s %C(green)%d%C(reset)' --graph --date-order
-  ls = ls-files -t -d -o -m -c --directory
-  ls-st = ls-files -t -d -o -m -c -s --directory
-  dead = log --diff-filter=D --summary
-  up = pull
-  current-branch = rev-parse --abbrev-ref HEAD
-[credential]
-	helper = osxkeychain
+ui = auto
+
+[core]
+editor = nvim
+whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[fetch]
+prune = true
+
+[rebase]
+autosquash = true
+
+[merge]
+tool = vimdiff
+
 [pull]
-	rebase = false
+rebase = false
+
+[status]
+relativePaths = false
+
+[help]
+autocorrect = 0
+
+[alias]
+aa = add --all
+ap = add --patch
+ci = commit -v
+co = checkout
+df = diff
+ls = ls-files -t -d -o -m -c --directory
+ls-st = ls-files -t -d -o -m -c -s --directory
+st = status
+wdf = diff --word-diff
