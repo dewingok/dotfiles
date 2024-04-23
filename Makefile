@@ -34,8 +34,9 @@ dirs:
 	chmod 0700 ~/.ssh
 
 stow: dirs
-	stow configs -t ~ --dotfiles
-	stow configs-ssh -t ~/.ssh 
+	stow dot-home -t ~ --dotfiles
+	stow dot-config -t ~/.config
+	stow dot-ssh -t ~/.ssh 
 
 stow-delete:
 	stow -D configs -t ~ --dotfiles
