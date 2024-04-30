@@ -34,13 +34,14 @@ dirs:
 	chmod 0700 ~/.ssh
 
 stow: dirs
-	stow dot-home -t ~ --dotfiles
-	stow dot-config -t ~/.config
-	stow dot-ssh -t ~/.ssh 
+	stow home -vt ~ --dotfiles --no-folding
+	stow config -vt ~/.config
+	stow local -vt ~/.local
 
 stow-delete:
-	stow -D configs -t ~ --dotfiles
-	stow -D configs-ssh -t ~/.ssh
+	stow -D home -vt ~ --dotfiles --no-folding
+	stow -D config -vt ~/.config
+	stow -D local -vt ~/.local
 
 clean:
 	rm -f *.deb
