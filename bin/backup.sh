@@ -1,10 +1,9 @@
 #!/bin/bash
+# Script for performing a quick backup.
 
 # What to backup
-home_dir="/Users/ndewing"
-# backup_files=".atom/config.cson .aws .gitconfig .gitignore_global .gnupg .histfile .ssh .tmux.conf .tmuxinator .vim .vimrc .zsh .zshrc Brewfile Documents Pictures bin requirements.txt bookmarks-*.json brew_list_backup"
-backup_files=".atom/config.cson .aws .gitconfig .gitignore_global .ssh .tmux.conf .tmuxinator .vim .vimrc .zsh .zshrc Brewfile Pictures bin/backup.sh bin/ssh_cfg_gen.py requirements.txt brew_list_backup"
-backup_git="intuit"
+backup_files=".histfile Documents Pictures bin bookmarks-*.json brew_list_backup"
+backup_git="github"
 
 
 # Where to backup
@@ -20,7 +19,7 @@ echo "Backing up $backup_files to $dest/$archive_file"
 date
 echo
 
-cd ${home_dir} || exit
+cd $HOME || exit
 brew list > brew_list_backup
 tar czf ${dest}/${archive_file} ${backup_files}
 tar czf ${dest}/${archive_repos} ${backup_git}
