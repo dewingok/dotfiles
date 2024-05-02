@@ -38,6 +38,7 @@ BASE16_SHELL=$HOME/github/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH"
+[[ $LINUX ]] && export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -45,5 +46,5 @@ export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 export EDITOR=$(which vim)
 
 # Python virtualenvwrapper
-VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
-source /usr/local/bin/virtualenvwrapper.sh
+# VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
+# source /usr/local/bin/virtualenvwrapper.sh

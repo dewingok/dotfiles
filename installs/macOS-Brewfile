@@ -1,0 +1,14 @@
+tap "homebrew/cask"
+
+cask "brave-browser"
+cask "burp-suite"
+cask "docker"
+cask "firefox"
+cask "iterm2"
+cask "postman"
+cask "visual-studio-code"
+cask "wireshark"
+
+mas "Divvy", id: 413857544
+mas "Microsoft Remote Desktop 10", id: 1295203466 
+mas "Slack", id: 803453959
