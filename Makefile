@@ -8,9 +8,9 @@ else ifeq ($(UNAME), Linux)
   OS := linux
 endif
 
-main: $(OS) brew-install brew-packages stow vscode vim
+main: $(OS) brew-packages stow vscode vim
 
-linux: linux-brave linux-apt 
+linux: linux-apt 
 
 linux-apt:
 	sudo apt update
@@ -18,10 +18,6 @@ linux-apt:
 	sudo apt autoclean
 	sudo apt autoremove
 	< installs/apt-packages.txt xargs sudo apt install -y
-
-linux-brave:
-	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 macos: 
 
@@ -31,9 +27,6 @@ brew-install:
 
 brew-packages:
 	brew bundle --file=./installs/Brewfile
-ifeq ($(OS), macos)
-	brew bundle --file=./installs/Brewfile-mac
-endif
 
 dirs:
 	mkdir -p ~/tmp
