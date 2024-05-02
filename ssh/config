@@ -3,7 +3,7 @@ Host *
     ServerAliveInterval 60
     ServerAliveCountMax 4
     VerifyHostKeyDNS ask
-    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/id_ed25519
     UseKeychain yes
     AddKeysToAgent yes
     ControlMaster auto
