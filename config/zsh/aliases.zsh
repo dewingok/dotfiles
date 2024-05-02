@@ -2,17 +2,15 @@
 alias sudo='sudo '
 
 alias g='git'
-alias hist='echo "Use <CTRL-R>'
+alias hist='echo "Use <CTRL-R>"'
 
 # Replacement tools
-[ command_exists nvim ] && alias vim='nvim'
-[ command_exists bat ] && alias cat="bat" 
-[ command_exists fd ] && alias find="fd"
-# [ -f ${BREW_PATH}/bat ] && alias cat="bat" 
-# [ -f ${BREW_PATH}/fd ] && alias find="fd"
+[ eval $(command_exists nvim) ] && alias vim='nvim'
+[ eval $(command_exists bat) ] && alias cat="bat" 
+[ eval $(command_exists fd) ] && alias find="fd"
 
 # Eza
-if [ command_exists eza ]; then 
+if [ eval $(command_exists eza) ]; then 
   alias ls='eza -a --group-directories-first'
   alias ll='ls -l'
 fi
