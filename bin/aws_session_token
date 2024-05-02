@@ -1,0 +1,21 @@
+#!/bin/bash
+# 
+# USAGE:
+# For the 'export' commands to work, this file needs to be called via 'source'
+# An 'alias' can be used as work around. For an example, view: 'zsh/aliases'
+
+MFA_DEVICE_ARN=$(cat ~/.aws/mfa_device_arn)
+
+MFA_TOKEN_CODE=''
+echo -n "Enter MFA code to complete sign-in: "
+read -r MFA_TOKEN_CODE
+
+SESSION_JSON=$(aws sts get-session-token --serial-number "$MFA_DEVICE_ARN" --token-code "$MFA_TOKEN_CODE")
+
+AWS_ACCESS_KEY_ID=$(echo "$SESSION_JSON" | jq -j '.Credentials.AccessKeyId')
+AWS_SECRET_ACCESS_KEY=$(echo "$SESSION_JSON" | jq -j '.Credentials.SecretAccessKey')
+AWS_SESSION_TOKEN=$(echo "$SESSION_JSON" | jq -j '.Credentials.SessionToken')
+
+export AWS_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY
+export AWS_SESSION_TOKEN
