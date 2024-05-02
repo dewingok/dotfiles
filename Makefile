@@ -16,9 +16,11 @@ linux:
 	sudo apt autoclean
 	sudo apt autoremove
 
-linux-chrome:
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo apt install -y ./google-chrome-stable_current_amd64.deb
+linux-brave:
+	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+	sudo apt update
+	sudo apt install brave-browser
 
 install-brew:
 	sudo -v
