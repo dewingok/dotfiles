@@ -30,8 +30,8 @@ compinit
 autoload -U zmv
 
 # OS variables
-[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1 && export UNIX=1
-[[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
+[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1
+[[ "$(uname -s)" = "Linux" ]] && export LINUX=1
 
 # Sourcing other files.
 source $HOME/.zsh/aliases
@@ -49,6 +49,9 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+[[ -d "$HOME/.emacs.d/bin" ]] && export PATH="$HOME/.emacs.d/bin:$PATH"
+
+
 export EDITOR=$(which vim)
 
 # Use starship for prompt if installed
