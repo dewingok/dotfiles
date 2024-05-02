@@ -35,6 +35,7 @@ vim:
 	vim +PlugInstall +qall +silent
 
 dirs:
+	[ ! -d "~/tmp" ] && mkdir ~/tmp
 	[ ! -d "~/.ssh" ] && mkdir ~/.ssh
 	chmod 0700 ~/.ssh
 
