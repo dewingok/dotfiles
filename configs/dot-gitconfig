@@ -1,7 +1,7 @@
 [include]
   path = ~/.git-local
 [user]
-  name = Nick Dewing
+	name = Nick Dewing
 [core]
   editor = vim
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
