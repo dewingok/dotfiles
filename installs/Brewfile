@@ -1,11 +1,12 @@
+# -*- mode: ruby; -*-
+# vim: ft=ruby
+
 tap "homebrew/bundle" 
-tap "wallix/awless"
 
 brew "adns"
 brew "ansible"
 brew "ansible-lint"
 brew "awscli"
-brew "awless"
 brew "bat"
 brew "binwalk"
 brew "cfn-lint"

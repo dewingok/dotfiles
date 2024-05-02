@@ -1,4 +1,5 @@
 # -*- mode: sh; -*-
+# vim: ft=sh
 # .zsh/prompt
 
 autoload -U colors
