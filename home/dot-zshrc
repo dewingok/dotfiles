@@ -1,4 +1,5 @@
-#  Load Zap
+# vim: set ft=zsh
+# Load Zap
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
 # Plugins
@@ -36,7 +37,7 @@ setopt HIST_IGNORE_ALL_DUPS
 export EDITOR=$(which vim)
 
 # fzf integration
-if command_exists fzf; then
+if [ eval $(command_exists fzf) ]; then
   eval "$(fzf --zsh)"
 fi
 
