@@ -1,8 +1,7 @@
 #!/bin/bash
-# 
-# USAGE:
-# For the 'export' commands to work, this file needs to be called via 'source'
-# An 'alias' can be used as work around. For an example, view: 'zsh/aliases'
+# Get aws session tokens, and export into environmental variables.
+# * For the 'export' commands to work, this file needs to be called via 'source'
+# * An 'alias' can be used as work around. For an example, view: 'zsh/aliases'
 
 MFA_DEVICE_ARN=$(cat ~/.aws/mfa_device_arn)
 
