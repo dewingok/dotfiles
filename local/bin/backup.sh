@@ -2,7 +2,7 @@
 # Script for performing a quick backup.
 
 # What to backup
-backup_files=".histfile .doom.d .ssh/id_* Documents Downloads Pictures tmp org secrets bookmarks-*.json brew_list_backup"
+backup_files=".histfile Documents Downloads Pictures tmp secrets bookmarks-*.json brew_list_backup"
 backup_git="github"
 
 

@@ -1,0 +1,45 @@
+[include]
+path = ~/.config/git/config.local
+
+[init]
+defaultBranch = main
+
+[push]
+default = current
+
+[color]
+ui = auto
+
+[core]
+editor = nvim
+whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[fetch]
+prune = true
+
+[rebase]
+autosquash = true
+
+[merge]
+tool = vimdiff
+
+[pull]
+rebase = false
+
+[status]
+relativePaths = false
+
+[help]
+autocorrect = 0
+
+[alias]
+aa = add --all
+ap = add --patch
+ci = commit -v
+co = checkout
+df = diff
+ls = ls-files -t -d -o -m -c --directory
+ls-st = ls-files -t -d -o -m -c -s --directory
+st = status
+wdf = diff --word-diff
+delete-merged = "!git fetch && git branch --merged | egrep -v 'master' | xargs git branch -d"
