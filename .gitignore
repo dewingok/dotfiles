@@ -12,3 +12,6 @@ lazy-lock.json
 # 'local' files 
 *.local
 local.zsh
+
+# TPM Plugins
+config/tmux/plugins
