@@ -1,5 +1,5 @@
+# -*- mode: ruby; -*-
 # Brewfile for casks, mas, and Mac only packages
-# vim: set ft=ruby
 
 tap "homebrew/cask"
 
@@ -7,6 +7,7 @@ cask "brave-browser"
 cask "burp-suite"
 cask "docker"
 cask "firefox"
+cask "homebrew/cask/emacs"
 cask "iterm2"
 cask "postman"
 cask "visual-studio-code"
