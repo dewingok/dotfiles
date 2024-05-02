@@ -3,6 +3,8 @@
 # * For the 'export' commands to work, this file needs to be called via 'source'
 # * An 'alias' can be used as work around. For an example, view: 'zsh/aliases'
 
+unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+
 MFA_DEVICE_ARN=$(cat ~/.aws/mfa_device_arn)
 
 MFA_TOKEN_CODE=''
