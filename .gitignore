@@ -6,3 +6,9 @@
 # Homebrew
 Brewfile.lock.json
 
+#NeoVim
+lazy-lock.json
+
+# 'local' files 
+*.local
+local.zsh
