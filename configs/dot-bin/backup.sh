@@ -3,7 +3,7 @@
 
 # What to backup
 backup_files=".histfile .doom.d .ssh/id_* Documents Downloads Pictures tmp org secrets bookmarks-*.json brew_list_backup"
-backup_git="equinix github/attack-* github/base16-*"
+backup_git="github"
 
 
 # Where to backup
