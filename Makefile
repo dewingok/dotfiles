@@ -16,6 +16,10 @@ linux:
 	sudo apt autoclean
 	sudo apt autoremove
 
+linux-chrome:
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
 install-brew:
 	sudo -v
 	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
@@ -33,3 +37,6 @@ vim:
 
 stow:
 	stow configs -t ~
+
+clean:
+	rm -f *.deb
