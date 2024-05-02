@@ -1,0 +1,20 @@
+# .zsh/functions
+
+rhost () {
+  host_result=$(host $1)
+  print "${host_result}"
+  host_ip=$(echo ${host_result} | sed '/has address/!d' | cut -d' ' -f4)
+  host ${host_ip}
+}
+
+hloop () {
+  for wip in $(cat $1); do
+    echo "% host $wip"
+    host $wip
+    echo '=-=-=-=-=-='
+  done
+}
+
+qssl() {
+  echo | openssl s_client -connect ${1}:443
+}
