@@ -33,6 +33,9 @@ alias org="emacs ~/org &"
 alias bup="brew update && brew upgrade"
 alias bug="brew upgrade"
 
+[ $LINUX  ] && alias aup="sudo apt update && sudo apt upgrade"
+[ $LINUX  ] && alias aug="sudo apt upgrade"
+
 # CyberArk break/fix 
 if command -v CyberArkEPM; then
     alias fixca="sudo chown ${USER}:admin /usr/local/bin"
