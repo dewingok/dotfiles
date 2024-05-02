@@ -8,9 +8,9 @@ else ifeq ($(UNAME), Linux)
   OS := linux
 endif
 
-main: $(OS)
+main: $(OS) brew-install brew-packages dirs vscode vim
 
-linux: linux-brave linux-apt brew-install brew-packages vscode vim
+linux: linux-brave linux-apt 
 
 linux-apt:
 	sudo apt update
@@ -22,7 +22,7 @@ linux-brave:
 	curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
 	echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
-macos: brew-install brew-packages vscode vim
+macos: 
 
 brew-install:
 	sudo -v
@@ -30,10 +30,9 @@ brew-install:
 
 brew-packages:
 	brew bundle --file=./installs/Brewfile
-ifeq ($(OS), Darwin)
-	brew bundle --file=./installs/macOS-Brewfile
+ifeq ($(OS), macos)
+	brew bundle --file=./installs/Brewfile-mac
 endif
-
 
 vscode:
 	for EXTENSION in $(shell cat installs/vscode-extensions); do \
