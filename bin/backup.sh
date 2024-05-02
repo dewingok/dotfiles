@@ -2,12 +2,12 @@
 # Script for performing a quick backup.
 
 # What to backup
-backup_files=".histfile Documents Pictures bin bookmarks-*.json brew_list_backup"
-backup_git="github"
+backup_files=".histfile .doom.d .ssh/id_* Documents Downloads Pictures tmp org secrets bookmarks-*.json brew_list_backup"
+backup_git="equinix github/attack-* github/base16-*"
 
 
 # Where to backup
-dest="${home_dir}"
+dest="${HOME}"
 
 # Archive naming
 date=$(date +%F)
