@@ -28,6 +28,11 @@ alias grep="grep --color"
 alias hist="history 0 | grep"
 alias tokenz="source ~/.bin/aws_session_token"
 
+# Saving keystrokes
+alias org="emacs ~/org &"
+alias bup="brew update && brew upgrade"
+alias bug="brew upgrade"
+
 # CyberArk break/fix 
 if command -v CyberArkEPM; then
     alias fixca="sudo chown ${USER}:admin /usr/local/bin"
