@@ -24,6 +24,10 @@ zstyle :compinstall filename '/Users/ndewing/.zshrc'
 autoload -Uz compinit
 compinit
 
+# OS variables
+[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1 && export UNIX=1
+[[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
+
 # Sourcing other files.
 source $HOME/.zsh/aliases
 source $HOME/.zsh/prompt
