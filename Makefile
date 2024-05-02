@@ -34,8 +34,11 @@ vim:
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +qall +silent
 
+dirs:
+	[ ! -d "~/.ssh" ] && mkdir ~/.ssh
+	chmod 0700 ~/.ssh
 
-stow:
+stow: dirs
 	stow configs -t ~
 
 clean:
