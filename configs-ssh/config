@@ -9,10 +9,6 @@ Host *
     ControlMaster auto
     ControlPath ~/.ssh/control:%h:%p:%r
 
-Host git-codecommit.*.amazonaws.com
-User APKAXFCS33LPIUS7JUPE
-IdentityFile ~/.ssh/gfm-id_rsa
-
 ### AWS ###
 # Host bastion* 
 # StrictHostKeyChecking no
