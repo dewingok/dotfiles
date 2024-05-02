@@ -37,7 +37,7 @@ setopt HIST_IGNORE_ALL_DUPS
 export EDITOR=$(which vim)
 
 # fzf integration
-if [ eval $(command_exists fzf) ]; then
+if (( $+commands[fzf] )); then
   eval "$(fzf --zsh)"
 fi
 
