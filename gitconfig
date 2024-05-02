@@ -53,3 +53,5 @@
   current-branch = rev-parse --abbrev-ref HEAD
 [credential]
 	helper = osxkeychain
+[pull]
+	rebase = false
