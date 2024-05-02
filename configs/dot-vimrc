@@ -18,20 +18,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
-" Ruby and Chef
-Plug 'vim-ruby/vim-ruby'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'vadv/vim-chef'
-
 " JSON
 Plug 'elzr/vim-json'
 
 " Python
 Plug 'klen/python-mode', { 'branch': 'develop' }
-
-" Salt Stack
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'saltstack/salt-vim'
 
 " colorschemes
 Plug 'chriskempson/base16-vim'
@@ -80,8 +71,6 @@ augroup END
 
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner
-"let g:netrw_browse_split=4  " open in prior window
-" let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
@@ -103,17 +92,9 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-" let g:UltiSnipsExpandTrigger = "<cr>"
-
 " Python-mode options
 let g:pymode_lint_on_write = 0
 let g:pymode_python = 'python3'
-
-" Neomake
-" let g:neomake_open_list = 2
-" let g:neomake_ruby_enabled_makers = ['rubocop']
-" let g:neomake_chef_enabled_makers = ['foodcritic, rubocop']
 
 " Syntastic options
 let g:syntastic_always_populate_loc_list = 1
@@ -122,7 +103,6 @@ let g:syntastic_loc_list_height=6
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_python_pylint_args = "--disable=C0111,C0103,W0621"
 
 function! MyStatusLine()
