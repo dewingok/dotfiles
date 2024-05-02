@@ -3,12 +3,13 @@ tap "homebrew/cask"
 tap "wallix/awless"
 
 cask "burp-suite"
-cask "corretto"
+# cask "corretto"
 cask "docker"
-cask "firefox"
-cask "google-chrome"
+# cask "firefox"
+# cask "google-chrome"
 cask "iterm2"
 cask "postman"
+cask "visual-studio-code"
 cask "wireshark"
 
 brew "adns"
@@ -68,6 +69,6 @@ brew "tmuxinator-completion"
 brew "vim"
 brew "wget"
 
-mas "Divvy", id: 413857544
-mas "Microsoft Remote Desktop 10", id: 1295203466 
-mas "Slack", id: 803453959
+# mas "Divvy", id: 413857544
+# mas "Microsoft Remote Desktop 10", id: 1295203466 
+# mas "Slack", id: 803453959

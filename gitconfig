@@ -1,5 +1,6 @@
+[include]
+  path = ~/.git/config_local
 [user]
-	email = 
   name = Nick Dewing
 [core]
   editor = vim
