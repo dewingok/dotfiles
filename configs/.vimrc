@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 " General plugins
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job control functonality
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab'
