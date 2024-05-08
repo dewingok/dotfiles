@@ -1,21 +1,15 @@
 # sudo - now with aliases!
 alias sudo='sudo '
 
-alias g='git'
-alias hist='echo "Use <CTRL-R>"'
-
 # Replacement tools
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[bat] )) && alias cat="bat" 
 (( $+commands[fd] )) && alias find="fd"
+(( $+commands[eza] )) && alias ls='eza -a --group-directories-first'
 
-# Eza
-if (( $+commands[eza] )); then 
-  alias ls='eza -a --group-directories-first'
-else
-  alias ls='ls -a'
-  alias ll='ls -l'
-fi
+alias ll='ls -l'
+alias g='git'
+alias hist='echo "Use <CTRL-R>"'
 
 # Colorize grep output
 alias grep="grep --color=auto"
