@@ -1,45 +1,48 @@
 [include]
-path = ~/.config/git/config.local
+  path = ~/.config/git/config.local
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 
 [init]
-defaultBranch = main
+  defaultBranch = main
 
 [push]
-default = current
+  default = current
 
 [color]
-ui = auto
+  ui = auto
 
 [core]
-editor = nvim
-whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  editor = nvim
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [fetch]
-prune = true
+  prune = true
 
 [rebase]
-autosquash = true
+  autosquash = true
 
 [merge]
-tool = vimdiff
+  tool = vimdiff
 
 [pull]
-rebase = false
+  rebase = false
 
 [status]
-relativePaths = false
+  relativePaths = false
 
 [help]
-autocorrect = 0
+  autocorrect = 0
 
 [alias]
-aa = add --all
-ap = add --patch
-ci = commit -v
-co = checkout
-df = diff
-ls = ls-files -t -d -o -m -c --directory
-ls-st = ls-files -t -d -o -m -c -s --directory
-st = status
-wdf = diff --word-diff
-delete-merged = "!git fetch && git branch --merged | egrep -v 'master' | xargs git branch -d"
+  aa = add --all
+  ap = add --patch
+  ci = commit -v
+  co = checkout
+  df = diff
+  ls = ls-files -t -d -o -m -c --directory
+  ls-st = ls-files -t -d -o -m -c -s --directory
+  st = status
+  wdf = diff --word-diff
+  delete-merged = "!git fetch && git branch --merged | egrep -v 'master' | xargs git branch -d"
