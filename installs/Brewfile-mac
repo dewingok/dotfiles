@@ -1,16 +1,11 @@
 # vim: ft=ruby
-# Brewfile for casks, mas, and Mac only packages
-
+# Packages to add to a Mac
 tap "homebrew/cask"
 
-cask "brave-browser"
-cask "burp-suite"
-cask "docker"
-cask "firefox"
-cask "iterm2"
-cask "postman"
-cask "visual-studio-code"
-cask "wireshark"
 
-# mas "Divvy", id: 413857545
-# mas "Slack", id: 803453959
+brew "coreutils"
+brew "gnu-sed"
+brew "gnutls"
+brew "openssl"
+brew "vim"
+brew "wget"

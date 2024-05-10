@@ -8,16 +8,11 @@ else ifeq ($(UNAME), Linux)
   OS := linux
 endif
 
-main: $(OS) brew-packages stow vscode vim
+main: $(OS) brew-install brew-packages plugin-managers stow
 
-linux: linux-apt 
-
-linux-apt:
-	sudo apt update
-	sudo apt upgrade -y
-	sudo apt autoclean
-	sudo apt autoremove
-	< installs/apt-packages.txt xargs sudo apt install -y
+linux:
+	sudo -v
+	sudo apt install zsh git tmux build-essential curl file
 
 macos: 
 
@@ -27,7 +22,18 @@ brew-install:
 
 brew-packages:
 	brew bundle --file=./installs/Brewfile
+ifeq ($(UNAME), Darwin)
+	brew bundle --file=./installs/Brewfile-mac
+endif
 
+plugin-managers: zap tmux-plugin-manager
+
+zap:
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+
+tmux-plugin-manager:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	
 dirs:
 	mkdir -p ~/tmp
 	mkdir -p ~/.ssh
