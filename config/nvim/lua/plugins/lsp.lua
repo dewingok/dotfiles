@@ -8,7 +8,6 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lasy =  false,
     opts = {
       auto_install = true,
     },
@@ -17,17 +16,20 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
       lspconfig.terraformls.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
       lspconfig.tflint.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
+      })
+      lspconfig.yamlls.setup({
+        capabilities = capabilities,
       })
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
