@@ -1,42 +1,64 @@
 return {
-  {
+  "neovim/nvim-lspconfig",
+  dependencies = {
     "williamboman/mason.nvim",
-    lazy = false,
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
-    opts = {
-      auto_install = true,
-    },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/nvim-cmp",
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
   },
-  {
-    "neovim/nvim-lspconfig",
-    lazy = false,
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.terraformls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tflint.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.yamlls.setup({
-        capabilities = capabilities,
-      })
+  config = function()
+    local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, {})
-      vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, {})
-    end,
-  },
+    local default_setup = function(server)
+      require("lspconfig")[server].setup({
+        capabilities = lsp_capabilities,
+      })
+    end
+
+    require("mason").setup({})
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "lua_ls",
+        "terraformls",
+        "tflint",
+        "yamlls",
+        "pyright",
+      },
+      handlers = {
+        default_setup,
+      },
+    })
+
+    local cmp = require("cmp")
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    cmp.setup({
+      snippet = {
+        expand = function(args)
+          require("luasnip").lsp_expand(args.body)
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      }),
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+      },
+    })
+  end,
 }
