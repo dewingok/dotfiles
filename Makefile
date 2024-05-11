@@ -3,9 +3,9 @@ UNAME := $(shell uname -s)
 USER  := $(shell whoami)
 
 ifeq ($(UNAME), Darwin)
-  OS := macos
+	OS := macos
 else ifeq ($(UNAME), Linux)
-  OS := linux
+	OS := linux
 endif
 
 main: $(OS) brew-install brew-packages plugin-managers stow
@@ -33,7 +33,7 @@ zap:
 
 tmux-plugin-manager:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	
+
 dirs:
 	mkdir -p ~/tmp
 	mkdir -p ~/.ssh
