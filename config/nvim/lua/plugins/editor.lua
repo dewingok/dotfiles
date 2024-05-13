@@ -2,8 +2,15 @@ return {
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = function ()
+    config = function()
       require("nvim-surround").setup({})
-    end
+    end,
+  },
+  {
+    "echasnovski/mini.align",
+    event = "VeryLazy",
+    config = function()
+      require('mini.align').setup({})
+    end,
   },
 }
