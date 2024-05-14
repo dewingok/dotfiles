@@ -9,7 +9,7 @@ function activate() {
   source "./$env/bin/activate"
 }
 
-function make_venv() {
+function make-venv() {
   local env=${1:-".venv"}
   if [[ -d "$env" ]]; then
     echo "Virtual environment '$env' already exists."
@@ -21,7 +21,16 @@ function make_venv() {
   pip install -U pip
 }
 
+function git-pull-rebase() {
+  local branch=${1:-"main"}
+
+  if git rev-parse --is-inside-work-tree &> /dev/null; then
+    git checkout $branch
+    git fetch origin $branch
+    git reset --hard origin/$branch
+  fi
+}
+
 function ossl() {
   echo | openssl s_client -connect ${1}:443
 }
-
