@@ -1,17 +1,20 @@
 return {
-	"nvimtools/none-ls.nvim",
-	config = function()
-		local null_ls = require("null-ls")
-		null_ls.setup({
-			sources = {
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.isort,
-        null_ls.builtins.diagnostics.yamllint,
-        null_ls.builtins.diagnostics.zsh,
-			},
-		})
+  "nvimtools/none-ls.nvim",
+  config = function()
+    local nls = require("null-ls")
+    local fmt = nls.builtins.formatting
+    local diag = nls.builtins.diagnostics
+    nls.setup({
+      sources = {
+        fmt.stylua,
+        fmt.black,
+        fmt.isort,
+        fmt.terraform_fmt,
+        diag.yamllint,
+        diag.zsh,
+      },
+    })
 
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-	end,
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+  end,
 }
