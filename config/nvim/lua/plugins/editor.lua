@@ -10,7 +10,14 @@ return {
     "echasnovski/mini.align",
     event = "VeryLazy",
     config = function()
-      require('mini.align').setup({})
+      require("mini.align").setup({})
+    end,
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({})
     end,
   },
 }

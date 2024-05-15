@@ -9,14 +9,17 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
+    "lukas-reineke/lsp-format.nvim",
   },
 
   config = function()
     local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lsp_on_attach = require("lsp-format").on_attach
 
     local default_setup = function(server)
       require("lspconfig")[server].setup({
         capabilities = lsp_capabilities,
+        on_attach = lsp_on_attach,
       })
     end
 
