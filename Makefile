@@ -8,13 +8,14 @@ else ifeq ($(UNAME), Linux)
 	OS := linux
 endif
 
-main: $(OS) brew-install brew-packages plugin-managers stow
+main: $(OS) plugin-managers stow
 
 linux:
 	sudo -v
-	sudo apt install zsh git tmux build-essential curl file
+	command -v apt && sudo apt install zsh git tmux build-essential curl file
+	command -v pacman && sudo pacman -Syu $(cat installs/pacman.list)
 
-macos: 
+macos: brew-install brew-packages
 
 brew-install:
 	sudo -v
@@ -26,12 +27,12 @@ ifeq ($(UNAME), Darwin)
 	brew bundle --file=./installs/Brewfile-mac
 endif
 
-plugin-managers: zap tmux-plugin-manager
+plugin-managers: zap tpm
 
 zap:
-	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep
 
-tmux-plugin-manager:
+tpm:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 dirs:
