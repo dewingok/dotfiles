@@ -11,6 +11,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "$HOME/.config/zsh/functions.zsh"
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/prompt.zsh"
+plug "$HOME/.config/zsh/ssh-agent.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && plug "$HOME/.config/zsh/local.zsh"
 
 # Load and initialise completion system
