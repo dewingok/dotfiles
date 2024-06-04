@@ -1,6 +1,6 @@
 return {
-	"cecchasnovski/mini.nvim",
-	version = "*",
+	"echasnovski/mini.nvim",
+	-- version = "*",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
