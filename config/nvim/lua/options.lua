@@ -40,13 +40,20 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Filetype detection fix
+-- Terraform...
 vim.filetype.add({
   extension = {
     tf = "terraform",
     tfvars = "terraform",
     tfstate = "json",
   },
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
+  callback = function(ev)
+    vim.bo[ev.buf].commentstring = "#%s"
+  end,
+  pattern = { "terraform", "hcl" },
 })
 
 -- autocmds
