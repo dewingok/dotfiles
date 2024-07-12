@@ -21,14 +21,24 @@ function make-venv() {
   pip install -U pip
 }
 
-function git-pull-rebase() {
-  local branch=${1:-"main"}
+# function git-pull-rebase() {
+#   local branch=${1:-"main"}
+#
+#   if git rev-parse --is-inside-work-tree &> /dev/null; then
+#     git checkout $branch
+#     git fetch origin $branch
+#     git reset --hard origin/$branch
+#   fi
+# }
 
-  if git rev-parse --is-inside-work-tree &> /dev/null; then
-    git checkout $branch
-    git fetch origin $branch
-    git reset --hard origin/$branch
-  fi
+function git-head-branch() {
+  command git remote show origin | sed -n '/HEAD branch/s/.*: //p' || return
+}
+
+function so-fetch() {
+  local main=$( git-head-branch )
+  git fetch origin
+  git merge origin/${main}
 }
 
 function ossl() {
