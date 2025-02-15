@@ -10,12 +10,10 @@ local M = {
 
 function M.config()
 	require("neo-tree").setup({
-		default_component_configs = {
-			filesystem = {},
-			window = {
-				postition = "left",
-				width = 30,
-			},
+		filesystem = {},
+		window = {
+			postition = "left",
+			width = 30,
 		},
 	})
 	vim.keymap.set("n", "\\", ":Neotree reveal<CR>")
