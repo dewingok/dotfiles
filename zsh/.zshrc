@@ -43,6 +43,12 @@ if (( $+commands[fzf] )); then
   eval "$(fzf --zsh)"
 fi
 
+# Go
+if (( $+commands[go] )); then
+  export GOPATH="$HOME/go"
+  export PATH="$PATH:$GOPATH/bin"
+fi
+
 # Python virtualenvwrapper
 # VIRTUALENVWRAPPER_PYTHON="$(command \which python3)"
 # source /usr/local/bin/virtualenvwrapper.sh
