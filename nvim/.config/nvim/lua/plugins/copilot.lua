@@ -1,4 +1,4 @@
-return { -- This file configures the Copilot plugins for Neovim
+return {
 	{ -- Plugin for GitHub Copilot
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
