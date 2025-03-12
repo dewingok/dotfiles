@@ -16,7 +16,7 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
-alias tokenz="source ~/.bin/aws_session_token"
+alias freshsesh="source ~/.bin/aws-session-token"
 
 if (( $+commands[brew] )); then
   alias bup="brew update && brew upgrade"
