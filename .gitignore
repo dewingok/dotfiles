@@ -10,11 +10,7 @@ Brewfile.lock.json
 lazy-lock.json
 
 # 'local' files 
-*.local
 local.zsh
 
 # TPM Plugins
 config/tmux/plugins
-
-# Symlinks added to .local/bin
-local/bin/ansible*
