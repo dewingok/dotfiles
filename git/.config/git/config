@@ -45,4 +45,3 @@
   ls-st = ls-files -t -d -o -m -c -s --directory
   st = status
   wdf = diff --word-diff
-  delete-merged = "!git fetch && git branch --merged | egrep -v 'master' | xargs git branch -d"
