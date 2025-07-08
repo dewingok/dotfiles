@@ -24,6 +24,7 @@ return {
 			{ "nvim-telescope/telescope.nvim" },
 		},
 		opts = {
+			model = "claude-sonnet-4",
 			debug = true,
 			show_help = true,
 			window = {
