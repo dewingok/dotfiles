@@ -2,6 +2,9 @@ return {
 	{ -- Nerd Font Icons for plugins
 		"nvim-tree/nvim-web-devicons",
 	},
+	{ -- Once you Git it, you can't quit it.
+		"tpope/vim-fugitive",
+	},
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
