@@ -78,11 +78,17 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+	-- { -- Better viewing Markdown files
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- },
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
+			require("mini.diff").setup({
+				source = require("mini.diff").gen_source.none(),
+			})
 		end,
 	},
 	{ -- Add indentation guides even on blank lines
