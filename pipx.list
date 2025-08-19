@@ -1,0 +1,8 @@
+poetry
+black
+ruff
+pre-commit
+yamllint
+tmuxp
+checkov
+'--include-deps ansible'
