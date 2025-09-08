@@ -2,7 +2,6 @@
 alias sudo='sudo '
 
 # Replacement tools
-(( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[bat] )) && alias cat="bat" 
 (( $+commands[fd] )) && alias find="fd"
 (( $+commands[eza] )) && alias ls='eza -a --group-directories-first'

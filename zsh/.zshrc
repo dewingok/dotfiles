@@ -16,6 +16,7 @@ plug "$HOME/.config/zsh/ssh-agent.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && plug "$HOME/.config/zsh/local.zsh"
 
 # Load and initialise completion system
+fpath+=~/.zfunc
 autoload -Uz compinit
 compinit
 
@@ -37,7 +38,11 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
 # Exports
-export EDITOR=$(which vim)
+if (( $+commands[nvim] )); then
+  export EDITOR=$(which nvim)
+else
+  export EDITOR=$(which vim)
+fi
 
 # fzf integration
 if (( $+commands[fzf] )); then
@@ -50,9 +55,8 @@ if (( $+commands[go] )); then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
-# pyenv
-if (( $+commands[pyenv] )); then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init - zsh)"
-fi
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
