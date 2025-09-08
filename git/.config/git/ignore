@@ -23,3 +23,8 @@ Thumbs.db
 # Package Manager files #
 #########################
 package-lock.json
+
+# Copilot #
+.serena/*
+AGENTS.md
+

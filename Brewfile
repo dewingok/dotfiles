@@ -47,4 +47,5 @@ brew "volta"
 brew "wget"
 brew "xz"
 brew "yq"
+
 cask "alacritty"
