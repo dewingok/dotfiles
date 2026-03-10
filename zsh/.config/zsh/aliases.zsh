@@ -1,19 +1,16 @@
 # sudo - now with aliases!
 alias sudo='sudo '
 
-# Replacement tools
-(( $+commands[bat] )) && alias cat="bat" 
-# (( $+commands[fd] )) && alias find="fd"
-(( $+commands[eza] )) && alias ls='eza -a --group-directories-first'
+# Additive shortcuts for modern tools
+(( $+commands[bat] )) && alias b='bat'
+(( $+commands[fd] )) && alias f='fd'
+(( $+commands[fd] )) && alias ff='fd -H'
+(( $+commands[eza] )) && alias l='eza -a --group-directories-first'
+(( $+commands[eza] )) && alias ll='eza -la --group-directories-first'
+(( $+commands[rg] )) && alias r='rg'
 
-alias ll='ls -l'
 alias g='git'
 alias hist='echo "Use <CTRL-R>"'
-
-# Colorize grep output
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
 
 alias freshsesh="source ~/.bin/aws-session-token"
 

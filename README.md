@@ -19,9 +19,6 @@ cd ~/.dotfiles
 
 # Install everything (may take a while, go make coffee)
 make install
-
-# Or if you're feeling adventurous
-./install.sh
 ```
 
 ## Support 🆘

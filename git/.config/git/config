@@ -1,5 +1,6 @@
 [user]
-  name = Nick Dewing
+  name = "Nick Dewing"
+  email = "2049761+dewingok@users.noreply.github.com"
 
 [include]
   path = ~/.config/git/config.local

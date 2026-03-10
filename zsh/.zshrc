@@ -6,7 +6,7 @@
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "jeffreytse/zsh-vi-mode"
+# plug "jeffreytse/zsh-vi-mode"
 
 # Source configs with Zap
 plug "$HOME/.config/zsh/functions.zsh"
@@ -23,8 +23,6 @@ compinit
 # Load zmv
 autoload -U zmv
 
-# Use Emacs style bindings
-# bindkey -e
 bindkey '[C' forward-word
 bindkey '[D' backward-word
 
@@ -42,6 +40,11 @@ if (( $+commands[nvim] )); then
   export EDITOR=$(which nvim)
 else
   export EDITOR=$(which vim)
+fi
+
+# Activate mise-managed tool shims for this shell.
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
 fi
 
 # fzf integration
