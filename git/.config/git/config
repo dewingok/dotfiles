@@ -3,7 +3,10 @@
   email = "2049761+dewingok@users.noreply.github.com"
 
 [include]
-  path = ~/.config/git/config.local
+  path = ~/.config/git/work-config
+
+[ghq]
+  root = ~/src
 
 [init]
   defaultBranch = main
