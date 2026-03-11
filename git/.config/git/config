@@ -2,8 +2,8 @@
   name = "Nick Dewing"
   email = "2049761+dewingok@users.noreply.github.com"
 
-[include]
-  path = ~/.config/git/work-config
+[includeIf "gitdir:~/src/eqix/"]
+  path = ~/.config/git/eqix-config
 
 [ghq]
   root = ~/src
