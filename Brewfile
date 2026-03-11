@@ -2,6 +2,7 @@
 brew "coreutils"
 brew "git"
 brew "git-crypt"
+brew "git-filter-repo"
 brew "git-flow"
 brew "gnu-sed"
 brew "grep"
