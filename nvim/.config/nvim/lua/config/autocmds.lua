@@ -22,13 +22,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "SuggestCommitMessage",
-	callback = function()
-		require("avante.config").override({ system_prompt = "Write commit message using commitizen convention" })
-	end,
-})
-vim.keymap.set("n", "<leader>am", function()
-	vim.api.nvim_exec_autocmds("User", { pattern = "SuggestCommitMessage" })
-end, { desc = "Avante: Suggest commit message" })
