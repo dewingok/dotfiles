@@ -2,23 +2,27 @@
 # Load Zap
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
+typeset -g ZSH_DOTFILES_DIR=${${(%):-%N}:A:h}
+
 # Plugins
-plug "zsh-users/zsh-autosuggestions"
+# plug "zsh-users/zsh-autosuggestions"
+plug "marlonrichert/zsh-autocomplete"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
-# plug "jeffreytse/zsh-vi-mode"
 
 # Source configs with Zap
 plug "$HOME/.config/zsh/functions.zsh"
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/prompt.zsh"
 plug "$HOME/.config/zsh/ssh-agent.zsh"
+[ -f "$HOME/.config/zsh/keybindings.zsh" ] && ZSH_KEYBINDINGS_FILE="$HOME/.config/zsh/keybindings.zsh"
+[ -z "$ZSH_KEYBINDINGS_FILE" ] && [ -f "$ZSH_DOTFILES_DIR/.config/zsh/keybindings.zsh" ] && ZSH_KEYBINDINGS_FILE="$ZSH_DOTFILES_DIR/.config/zsh/keybindings.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && plug "$HOME/.config/zsh/local.zsh"
 
 # Load and initialise completion system
-fpath+=~/.zfunc
-autoload -Uz compinit
-compinit
+# fpath+=~/.zfunc
+# autoload -Uz compinit
+# compinit
 
 # Load zmv
 autoload -U zmv
@@ -49,14 +53,11 @@ fi
 
 # fzf integration
 if (( $+commands[fzf] )); then
+  export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+${FZF_DEFAULT_OPTS} }--bind=ctrl-y:accept"
   eval "$(fzf --zsh)"
 fi
 
-# Go
-if (( $+commands[go] )); then
-  export GOPATH="$HOME/go"
-  export PATH="$PATH:$GOPATH/bin"
-fi
+[ -n "$ZSH_KEYBINDINGS_FILE" ] && source "$ZSH_KEYBINDINGS_FILE"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
