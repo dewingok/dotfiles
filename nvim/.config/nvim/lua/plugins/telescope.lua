@@ -14,12 +14,27 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
-
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
 	config = function()
+		local vimgrep_args = { unpack(require("telescope.config").values.vimgrep_arguments) }
+		table.insert(vimgrep_args, "--hidden")
+		table.insert(vimgrep_args, "--glob")
+		table.insert(vimgrep_args, "!**/.git/*")
+
 		require("telescope").setup({
 			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown(),
+				},
+			},
+			defaults = {
+				vimgrep_arguments = vimgrep_args,
+			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+				},
 				["ui-select"] = { require("telescope.themes").get_dropdown() },
 			},
 		})

@@ -78,9 +78,9 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
-	-- { -- Better viewing Markdown files
-	-- 	"MeanderingProgrammer/render-markdown.nvim",
-	-- },
+	{ -- Better viewing Markdown files
+		"MeanderingProgrammer/render-markdown.nvim",
+	},
 	{ -- Collection of various small independent plugins/modules
 		"nvim-mini/mini.nvim",
 		config = function()
