@@ -1,23 +1,14 @@
 SHELL := /bin/zsh
-UNAME := $(shell uname -s)
-USER  := $(shell whoami)
+.DEFAULT_GOAL := setup
+XDG_CONFIG_HOME ?= $(HOME)/.config
+TPM_DIR := $(XDG_CONFIG_HOME)/tmux/plugins/tpm
+STOW_PACKAGES := $(patsubst %/,%,$(wildcard */))
 
-main: install
-
-.PHONY: main install setup dev test lint plugin-managers brew-bundle mise-install zap tpm dirs stow stow-delete check
+.PHONY: install setup dev test lint plugin-managers brew-bundle mise-install zap tpm dirs stow stow-delete check
 
 install: setup
 
 setup: dirs brew-bundle stow plugin-managers mise-install check
-
-dev:
-	@echo "Dotfiles repo has no dev runtime target. Use 'make setup' for bootstrap."
-
-test:
-	@echo "No automated tests configured for dotfiles yet."
-
-lint:
-	@echo "No lint target configured for dotfiles yet."
 
 plugin-managers: zap tpm
 
@@ -38,32 +29,46 @@ mise-install:
 
 check:
 	@echo "Running post-bootstrap checks..."
-	@command -v stow >/dev/null 2>&1 || (echo "Missing required command: stow" && exit 1)
-	@command -v tmux >/dev/null 2>&1 || (echo "Missing required command: tmux" && exit 1)
-	@command -v nvim >/dev/null 2>&1 || (echo "Missing required command: nvim" && exit 1)
-	@command -v mise >/dev/null 2>&1 || (echo "Missing required command: mise" && exit 1)
-	@mise which uv >/dev/null 2>&1 || (echo "Missing required mise tool: uv" && exit 1)
-	@mise which pnpm >/dev/null 2>&1 || (echo "Missing required mise tool: pnpm" && exit 1)
-	@mise exec -- uv --version >/dev/null 2>&1 || (echo "Unable to run uv via mise" && exit 1)
-	@mise exec -- pnpm --version >/dev/null 2>&1 || (echo "Unable to run pnpm via mise" && exit 1)
+	@for cmd in stow tmux nvim mise; do \
+		command -v $$cmd >/dev/null 2>&1 || { echo "Missing required command: $$cmd"; exit 1; }; \
+	done
+	@for tool in uv pnpm; do \
+		mise which $$tool >/dev/null 2>&1 || { echo "Missing required mise tool: $$tool"; exit 1; }; \
+		mise exec -- $$tool --version >/dev/null 2>&1 || { echo "Unable to run $$tool via mise"; exit 1; }; \
+	done
 	@echo "Bootstrap checks passed."
 
 zap:
-	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep
+	@if command -v zap >/dev/null 2>&1; then \
+		zsh <(curl -fsSL https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep; \
+	else \
+		echo "Zap installed; skipping."; \
+	fi
 
 tpm:
-	@if [ -d ~/.config/tmux/plugins/tpm/.git ]; then \
+	@if [ -d "$(TPM_DIR)/.git" ]; then \
 		echo "TPM already installed; skipping clone."; \
 	else \
-		git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm; \
+		git clone https://github.com/tmux-plugins/tpm "$(TPM_DIR)"; \
 	fi
 
 dirs:
-	mkdir -p ~/.ssh && chmod 0700 ~/.ssh
-	mkdir -p ~/.config/{git,tmux,zsh}
+	@if [ ! -d ~/.ssh ]; then \
+		mkdir -p ~/.ssh; \
+		chmod 0700 ~/.ssh; \
+	else \
+		echo "~/.ssh already exists; skipping."; \
+	fi
+	@for dir in "$(XDG_CONFIG_HOME)/git" "$(XDG_CONFIG_HOME)/tmux" "$(XDG_CONFIG_HOME)/zsh" "$(HOME)/.local/bin"; do \
+		if [ ! -d $$dir ]; then \
+			mkdir -p "$$dir"; \
+		else \
+			echo "$$dir already exists; skipping."; \
+		fi; \
+	done
 
 stow: dirs
-	stow */ -vt ~ 
+	stow $(STOW_PACKAGES) -vt ~
 
 stow-delete:
-	stow -D */ -vt ~
+	stow -D $(STOW_PACKAGES) -vt ~

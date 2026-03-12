@@ -1,0 +1,7 @@
+[misc]
+# show_skipped = true
+
+[git]
+repos = [
+  "~/src/*/*/*",
+]
