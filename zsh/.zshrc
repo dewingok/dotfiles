@@ -5,8 +5,8 @@
 typeset -g ZSH_DOTFILES_DIR=${${(%):-%N}:A:h}
 
 # Plugins
-# plug "zsh-users/zsh-autosuggestions"
-plug "marlonrichert/zsh-autocomplete"
+plug "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+plug "$(brew --prefix)/share/fzf-tab/fzf-tab.zsh"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 
@@ -15,14 +15,13 @@ plug "$HOME/.config/zsh/functions.zsh"
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/prompt.zsh"
 plug "$HOME/.config/zsh/ssh-agent.zsh"
-[ -f "$HOME/.config/zsh/keybindings.zsh" ] && ZSH_KEYBINDINGS_FILE="$HOME/.config/zsh/keybindings.zsh"
-[ -z "$ZSH_KEYBINDINGS_FILE" ] && [ -f "$ZSH_DOTFILES_DIR/.config/zsh/keybindings.zsh" ] && ZSH_KEYBINDINGS_FILE="$ZSH_DOTFILES_DIR/.config/zsh/keybindings.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && plug "$HOME/.config/zsh/local.zsh"
 
 # Load and initialise completion system
-# fpath+=~/.zfunc
-# autoload -Uz compinit
-# compinit
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' menu select
 
 # Load zmv
 autoload -U zmv
@@ -57,7 +56,7 @@ if (( $+commands[fzf] )); then
   eval "$(fzf --zsh)"
 fi
 
-[ -n "$ZSH_KEYBINDINGS_FILE" ] && source "$ZSH_KEYBINDINGS_FILE"
+[ -f "$HOME/.config/zsh/keybindings.zsh" ] && source "$HOME/.config/zsh/keybindings.zsh"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
