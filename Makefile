@@ -8,9 +8,7 @@ STOW_PACKAGES := $(patsubst %/,%,$(wildcard */))
 
 install: setup
 
-setup: dirs brew-bundle stow plugin-managers mise-install check
-
-plugin-managers: zap tpm
+setup: dirs brew-bundle stow tpm mise-install check
 
 brew-bundle:
 	@if command -v brew >/dev/null 2>&1; then \
@@ -37,13 +35,6 @@ check:
 		mise exec -- $$tool --version >/dev/null 2>&1 || { echo "Unable to run $$tool via mise"; exit 1; }; \
 	done
 	@echo "Bootstrap checks passed."
-
-zap:
-	@if command -v zap >/dev/null 2>&1; then \
-		zsh <(curl -fsSL https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep; \
-	else \
-		echo "Zap installed; skipping."; \
-	fi
 
 tpm:
 	@if [ -d "$(TPM_DIR)/.git" ]; then \

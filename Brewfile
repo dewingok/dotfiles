@@ -10,17 +10,28 @@ brew "neovim"
 brew "starship"
 brew "stow"
 brew "tmux"
-brew "zsh-completions"
+
+# Shell enhancements
+brew "fzf-tab"
 brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "zsh-system-clipboard"
+brew "zsh-vi-mode"
 
 # Toolchain/runtime manager
 brew "mise"
 
-# Cloud and infrastructure CLIs
+# Developer and infrastructure CLIs
 brew "awscli"
 cask "gcloud-cli"
 brew "gh"
+brew "ghq"
+
+# Editor and language tooling
 brew "terraform-ls"
+brew "tree-sitter"
+brew "tree-sitter-cli"
 
 # Quality and security tooling
 brew "hadolint"
@@ -33,14 +44,10 @@ brew "bottom"
 brew "eza"
 brew "fd"
 brew "fzf"
-brew "fzf-tab"
-brew "ghq"
 brew "jq"
 brew "procs"
 brew "ripgrep"
 brew "topgrade"
-brew "tree-sitter"
-brew "tree-sitter-cli"
 brew "wget"
 brew "yq"
 brew "zoxide"
@@ -58,4 +65,5 @@ brew "pcre2"
 brew "readline"
 brew "xz"
 
+# GUI apps
 cask "alacritty"
