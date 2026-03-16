@@ -1,0 +1,7 @@
+# vim: ft=toml
+
+font-family =  "Hack Nerd Font"
+font-size = 14
+font-thicken = true
+font-thicken-strength = 255
+theme = "Catppuccin Mocha"

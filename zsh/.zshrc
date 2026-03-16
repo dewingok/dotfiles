@@ -43,7 +43,7 @@ zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # zstyle ':completion:*' menu yes select
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu no select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
 _comp_options+=(globdots)
@@ -64,6 +64,8 @@ for plugin in "${plugins[@]}"; do
   [ -f $HOMEBREW_SHARE/$plugin/$plugin.zsh ] && source "$HOMEBREW_SHARE/$plugin/$plugin.zsh"
   [ ! -f $HOMEBREW_SHARE/$plugin/$plugin.zsh ] && echo "Plugin $plugin not found in Homebrew share directory."
 done
+
+[ -f "$HOME/.config/zsh/keybindings.zsh" ]  && source "$HOME/.config/zsh/keybindings.zsh"
 
 # Source local plugins or configurations
 [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
