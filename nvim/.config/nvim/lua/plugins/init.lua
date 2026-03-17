@@ -85,7 +85,15 @@ return {
 		"nvim-mini/mini.nvim",
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
-			require("mini.surround").setup()
+			require("mini.trailspace").setup()
+			require("mini.surround").setup({
+				custom_surroundings = {
+					b = {
+						input = { find = "```[^`]*```", extract = "^```(.*)```$" },
+						output = { left = "```", right = "```" },
+					},
+				},
+			})
 			require("mini.diff").setup({
 				source = require("mini.diff").gen_source.none(),
 			})
