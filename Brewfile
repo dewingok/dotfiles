@@ -67,3 +67,6 @@ brew "xz"
 
 # GUI apps
 cask "alacritty"
+cask "ghostty"
+cask "signal"
+cask "spotify"
