@@ -1,7 +1,20 @@
 [misc]
 # show_skipped = true
+skip_notify = false
+disable = ["node", "yarn", "pnpm", "pip3", "microsoft_office"]
 
+# Git
 [git]
 repos = [
   "~/src/*/*/*",
 ]
+
+# macOS
+[brew]
+autoremove = true
+
+# Custom commands
+# [commands]
+# "uv-tools" = "uv tool upgrade --all"
+# "pip-audit" = "pip audit || true"
+# "npm-audit" = "npm audit --omit=dev || true"

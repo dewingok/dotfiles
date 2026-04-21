@@ -1,6 +1,13 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/ndewing/.zsh/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 # vim: ft=zsh
 
-### Source aliases and functions ### 
+### Source aliases and functions ###
 [ -f "$HOME/.config/zsh/aliases.zsh" ]  && source "$HOME/.config/zsh/aliases.zsh"
 [ -f "$HOME/.config/zsh/functions.zsh" ]  && source "$HOME/.config/zsh/functions.zsh"
 
@@ -26,8 +33,9 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt SHARE_HISTORY
 
-### Prompt and Completions ### 
+### Prompt and Completions ###
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 else
@@ -42,7 +50,6 @@ autoload -Uz compinit
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' menu yes select
 zstyle ':completion:*' menu no select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
@@ -54,7 +61,7 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-### Plugins ### 
+### Plugins ###
 # List of plugins to load from Homebrew share directory
 plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode zsh-system-clipboard fzf-tab)
 
@@ -71,7 +78,7 @@ done
 [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
-### Integrations ### 
+### Integrations ###
 # Zoxide integration
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
@@ -83,7 +90,7 @@ if (( $+commands[fzf] )); then
   eval "$(fzf --zsh)"
 fi
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept,ctrl-n:down,ctrl-p:up,ctrl-y:accept
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
