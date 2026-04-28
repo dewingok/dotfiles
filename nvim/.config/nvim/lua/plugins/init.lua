@@ -88,9 +88,13 @@ return {
 			require("mini.trailspace").setup()
 			require("mini.surround").setup({
 				custom_surroundings = {
-					b = {
-						input = { find = "```[^`]*```", extract = "^```(.*)```$" },
-						output = { left = "```", right = "```" },
+					m = {
+						input = { "```[^\n]*\n().-()\n```" },
+						output = function()
+							local lang = MiniSurround.user_input("Markdown code block language")
+							local suffix = (lang ~= nil and lang ~= "") and (" " .. lang) or ""
+							return { left = "```" .. suffix .. "\n", right = "\n```" }
+						end,
 					},
 				},
 			})
