@@ -1,5 +1,6 @@
 # cask "signal"
 # cask "spotify"
+brew "anomalyco/tap/opencode"
 brew "awscli"
 brew "bat"
 brew "bottom"
