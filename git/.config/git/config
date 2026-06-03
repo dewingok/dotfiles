@@ -2,11 +2,8 @@
   name = "Nick Dewing"
   email = "2049761+dewingok@users.noreply.github.com"
 
-[url "git@github-work:"]
-  insteadOf = git@github.com:*equinix*/
-
-[includeIf "gitdir:~/src/github.com/*equinix*/"]
-  path = ~/.config/git/eqix-config
+[include]
+  path = ~/.config/git/config-local
 
 [ghq]
   root = ~/src
