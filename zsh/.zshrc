@@ -75,6 +75,7 @@ done
 [ -f "$HOME/.config/zsh/keybindings.zsh" ]  && source "$HOME/.config/zsh/keybindings.zsh"
 
 # Source local plugins or configurations
+zstyle ':plugins:ssh-agent' identities id_ed25519_dewingok id_ed25519_ndewing
 [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
@@ -109,3 +110,11 @@ esac
 # Google Cloud Completion and PATH setup
 if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pnpm
+export PNPM_HOME="/Users/ndewing/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

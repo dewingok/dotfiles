@@ -2,5 +2,15 @@
 node = "24"
 python = "3.13"
 go = "1.26"
-pnpm = "10"
+pnpm = "11"
 uv = "latest"
+bun = "latest"
+tombi = "latest"
+"npm:markdownlint-cli" = "latest"
+"npm:yaml-language-server" = "latest"
+
+[tasks.go-tools]
+run = """
+go install golang.org/x/tools/gopls@latest
+go install honnef.co/go/tools/cmd/staticcheck@latest
+"""

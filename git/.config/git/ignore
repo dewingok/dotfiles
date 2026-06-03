@@ -13,12 +13,8 @@ Thumbs.db
 *.swp
 
 # Agentic Coding #
-.serena/*
+.beads/*
 AGENTS.md
 .github/prompts/opsx-*
 .github/skills/openspec-*
 .github/copilot-instructions.md
-openspec/*
-**/openspec/*
-
-

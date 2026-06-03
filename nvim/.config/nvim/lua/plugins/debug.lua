@@ -3,8 +3,8 @@ return { -- Debugger
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
-		"williamboman/mason.nvim",
-		"jay-babu/mason-nvim-dap.nvim",
+		-- "williamboman/mason.nvim",
+    -- "jay-babu/mason-nvim-dap.nvim",
 		"leoluz/nvim-dap-go",
 	},
 	keys = {
@@ -62,13 +62,13 @@ return { -- Debugger
 		local dap = require("dap")
 		local dapui = require("dapui")
 
-		require("mason-nvim-dap").setup({
-			automatic_installation = true,
-			handlers = {},
-			ensure_installed = {
-				"delve",
-			},
-		})
+		-- require("mason-nvim-dap").setup({
+		-- 	automatic_installation = true,
+		-- 	handlers = {},
+		-- 	ensure_installed = {
+		-- 		"delve",
+		-- 	},
+		-- })
 
 		dapui.setup({
 			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
