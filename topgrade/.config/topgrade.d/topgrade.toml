@@ -8,6 +8,7 @@ disable = ["node", "yarn", "pnpm", "pip3", "microsoft_office"]
 repos = [
   "~/src/*/*/*",
 ]
+max_concurrency = 1
 
 # macOS
 [brew]

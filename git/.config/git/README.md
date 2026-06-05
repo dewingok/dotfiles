@@ -9,7 +9,7 @@
   insteadOf = ssh://git@github.com/example/
   insteadOf = git@github.com:example/
 
-[includeIf "gitdir:~/src/github.com/example/"]
+[includeIf "gitdir:~/src/github.com/example/**"]
 path = ~/.config/git/email-local
 ```
 
