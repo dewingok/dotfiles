@@ -1,3 +1,4 @@
+# cask "gcloud-cli"
 # cask "signal"
 # cask "spotify"
 brew "anomalyco/tap/opencode"
@@ -60,8 +61,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "zsh-system-clipboard"
 brew "zsh-vi-mode"
-cask "copilot-cli"
 cask "fluidvoice"
-cask "gcloud-cli"
 cask "ghostty"
 
