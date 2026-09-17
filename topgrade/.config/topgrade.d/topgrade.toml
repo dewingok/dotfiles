@@ -1,7 +1,7 @@
 [misc]
 # show_skipped = true
 skip_notify = false
-disable = ["node", "yarn", "pnpm", "pip3", "microsoft_office"]
+disable = ["node", "yarn", "pnpm", "pip3", "microsoft_office", "skills"]
 
 # Git
 [git]
