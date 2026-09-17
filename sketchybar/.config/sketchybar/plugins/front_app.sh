@@ -1,3 +1,5 @@
-#!/usr/bin/env bash
-# Display the name of the currently focused application.
-sketchybar --set "$NAME" label="$INFO"
+#!/bin/sh
+
+if [ "$SENDER" = "front_app_switched" ]; then
+  sketchybar --set "$NAME" label="$INFO"
+fi

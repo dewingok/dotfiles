@@ -10,10 +10,10 @@ COLOR="${2:-$CATPPUCCIN_TEXT}"
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set "$NAME" \
         background.drawing=on    \
-        background.color=$COLOR  \
+        background.color="$COLOR" \
         label.color="$CATPPUCCIN_BASE"
 else
     sketchybar --set "$NAME" \
         background.drawing=off   \
-        label.color=$COLOR
+        label.color="$COLOR"
 fi
