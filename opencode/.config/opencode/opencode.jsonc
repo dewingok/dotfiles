@@ -10,6 +10,9 @@
       ],
     },
   },
-  "lsp": {},
+  "tool_output": {
+    "max_lines": 300,
+    "max_bytes": 50000,
+  },
   "formatter": {}
 }

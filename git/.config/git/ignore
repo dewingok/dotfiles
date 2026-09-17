@@ -15,12 +15,6 @@ Thumbs.db
 # Worktrees #
 .worktrees/*
 
-# Agentic Coding #
-.beads/*
-AGENTS.md
-.github/prompts/opsx-*
-.github/skills/openspec-*
-.github/copilot-instructions.md
-
-# Claude #
+# Agents
+.agent/
 **/.claude/settings.local.json

@@ -110,3 +110,17 @@ case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
+#
+# >>> mise:fnox-bootstrap >>> managed by mise - do not edit between markers
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+if [ -z "${MISE_SHELL:-}" ]; then
+  eval "$(mise activate zsh)"
+fi
+if [ "${FNOX_SHELL:-}" != "zsh" ]; then
+  eval "$(fnox activate zsh)"
+fi
+# <<< mise:fnox-bootstrap <<<
+
