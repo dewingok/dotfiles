@@ -1,36 +1,35 @@
 config-version = 2
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-# ── Startup ──────────────────────────────────────────────────────────────────
 after-startup-command = [
-  'exec-and-forget sketchybar',
+  # 'exec-and-forget sketchybar',
   'exec-and-forget ~/.config/borders/bordersrc',
 ]
 
 start-at-login = true
-automatically-unhide-macos-hidden-apps = true
+auto-reload-config = true
 
-# ── Layout defaults ───────────────────────────────────────────────────────────
-accordion-padding = 30
-default-root-container-layout = 'tiles'
-default-root-container-orientation = 'auto'
-
-# ── Tree normalizations ───────────────────────────────────────────────────────
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# ── Mouse follows focus ───────────────────────────────────────────────────────
-on-focused-monitor-changed = []
-on-focus-changed = []
+accordion-padding = 30
 
-# ── Sketchybar integration ────────────────────────────────────────────────────
-exec-on-workspace-change = ['/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
 
-# ── Display workspace assignments ────────────────────────────────────────────
-# Keep each display's workspace set stable. Even workspaces fall back to the
-# main display when the secondary display is disconnected.
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = false
+
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# exec-on-workspace-change = [
+#   'bin/bash',
+#   '-c',
+#   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
+
+on-mode-changed = []
+focus-follows-mouse.enabled = false
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = ['secondary', 'main']
@@ -42,85 +41,28 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 8 = ['secondary', 'main']
 9 = 'main'
 
-# ── Key mapping ───────────────────────────────────────────────────────────────
 [key-mapping]
 preset = 'qwerty'
 
-# ── Gaps (Hyprland-style breathing room) ─────────────────────────────────────
 [gaps]
 inner.horizontal = 6
-inner.vertical   = 6
-outer.left       = 6
-outer.bottom     = 6
-outer.top        = [{monitor.'built-in' = 5}, 48]
-outer.right      = 6
+inner.vertical =   6
+outer.left =       6
+outer.bottom =     6
+outer.top =        6
+outer.right =      6
 
-# ── Window rules ──────────────────────────────────────────────────────────────
-# [[on-window-detected]]
-# if.app-id = 'com.mitchellh.ghostty'
-# run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'com.brave.Browser'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'com.anthropic.claudefordesktop'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.openai.codex'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'org.whispersystems.signal-desktop'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = ['move-node-to-workspace 5', 'layout floating']
-
-[[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.calculator'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.calculator'
-run = 'layout floating'
-
-# ── Main keybindings ──────────────────────────────────────────────────────────
 [mode.main.binding]
-# Focus (vim-style)
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+# Focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-# Move windows (vim-style)
+# Move windows
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
@@ -130,13 +72,7 @@ alt-shift-l = 'move right'
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
-# Layout toggles
-alt-slash       = 'layout tiles horizontal vertical'
-alt-comma       = 'layout accordion horizontal vertical'
-alt-shift-space = 'layout floating tiling'
-alt-f           = 'macos-native-fullscreen'
-
-# Workspace switching (number-based)
+# Workspace switching
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -158,42 +94,27 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-# Workspace navigation
-alt-tab       = 'workspace-back-and-forth'
-alt-shift-tab = 'focus-monitor --wrap-around next'
+# Workspace nav
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# Window management
-alt-q     = 'close'
+alt-q = 'close'
 alt-enter = 'exec-and-forget osascript -e "tell application \"Ghostty\" to new window"'
 
-# Mode switching
 alt-shift-semicolon = 'mode service'
-alt-r               = 'mode resize'
+alt-r = 'mode resize'
 
 # Disable accidental macOS app hide shortcuts
-cmd-h     = []
+cmd-h = []
 cmd-alt-h = []
 
-# ── Service mode ──────────────────────────────────────────────────────────────
 [mode.service.binding]
-esc       = ['reload-config', 'mode main']
-r         = ['flatten-workspace-tree', 'mode main']
-f         = ['layout floating tiling', 'mode main']
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-# Join windows into a container
-alt-shift-h = ['join-with left',  'mode main']
-alt-shift-j = ['join-with down',  'mode main']
-alt-shift-k = ['join-with up',    'mode main']
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
-
-# ── Resize mode ───────────────────────────────────────────────────────────────
-[mode.resize.binding]
-h     = 'resize width -50'
-j     = 'resize height +50'
-k     = 'resize height -50'
-l     = 'resize width +50'
-minus = 'resize smart -50'
-equal = 'resize smart +50'
-enter = 'mode main'
-esc   = 'mode main'

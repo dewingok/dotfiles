@@ -6,6 +6,13 @@ CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
 source "$CONFIG_DIR/colors.sh"
 
 COLOR="${2:-$CATPPUCCIN_TEXT}"
+WINDOW_COUNT="$(aerospace list-windows --workspace "$1" --count 2>/dev/null || printf '0')"
+
+if [ "$WINDOW_COUNT" -gt 0 ]; then
+    LABEL_COLOR="$CATPPUCCIN_TEXT"
+else
+    LABEL_COLOR="$CATPPUCCIN_OVERLAY1"
+fi
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set "$NAME" \
@@ -15,5 +22,5 @@ if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
 else
     sketchybar --set "$NAME" \
         background.drawing=off   \
-        label.color="$COLOR"
+        label.color="$LABEL_COLOR"
 fi
