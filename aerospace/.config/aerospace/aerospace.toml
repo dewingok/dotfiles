@@ -1,8 +1,9 @@
 config-version = 2
 
 after-startup-command = [
-  # 'exec-and-forget sketchybar',
   'exec-and-forget ~/.config/borders/bordersrc',
+  'layout --workspace 2 --root h_accordion',
+  'layout --workspace 3 --root h_accordion',
 ]
 
 start-at-login = true
@@ -11,7 +12,7 @@ auto-reload-config = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-accordion-padding = 30
+accordion-padding = 48
 
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
@@ -19,27 +20,41 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 automatically-unhide-macos-hidden-apps = false
 
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+persistent-workspaces = ["1", "2", "3", "4", "5"]
 
-# exec-on-workspace-change = [
-#   'bin/bash',
-#   '-c',
-#   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-# ]
+# exec-on-workspace-change = []
+# on-mode-changed = []
 
-on-mode-changed = []
 focus-follows-mouse.enabled = false
 
+# To find app ids: `aerospace list-apps`
+on-window-detected = [
+  # 2 - Ref
+  {
+    if = 'test %{app-bundle-id} = com.openai.chat',
+    run = 'move-node-to-workspace 2',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.anthropic.claudefordesktop',
+    run = 'move-node-to-workspace 2',
+  },
+  # 3 - Comms
+  {
+    if = 'test %{app-bundle-id} = com.microsoft.teams2',
+    run = 'move-node-to-workspace 3',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap',
+    run = 'move-node-to-workspace 3',
+  },
+]
+
 [workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = ['secondary', 'main']
-3 = 'main'
-4 = ['secondary', 'main']
-5 = 'main'
-6 = ['secondary', 'main']
-7 = 'main'
-8 = ['secondary', 'main']
-9 = 'main'
+1 = 'main'                  # Dev
+2 = ['secondary', 'main']   # Ref
+3 = ['secondary', 'main']   # Comms
+4 = ['secondary', 'main']   # Aux
+5 = 'main'                  # Temp
 
 [key-mapping]
 preset = 'qwerty'
