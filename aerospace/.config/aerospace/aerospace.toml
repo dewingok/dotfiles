@@ -31,7 +31,7 @@ focus-follows-mouse.enabled = false
 on-window-detected = [
   # 2 - Ref
   {
-    if = 'test %{app-bundle-id} = com.openai.chat',
+    if = 'test %{app-bundle-id} = com.openai.codex',
     run = 'move-node-to-workspace 2',
   },
   {
@@ -46,6 +46,33 @@ on-window-detected = [
   {
     if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap',
     run = 'move-node-to-workspace 3',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.apple.MobileSMS',
+    run = 'move-node-to-workspace 3',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.whispersystems.signal-desktop',
+    run = 'move-node-to-workspace 3',
+  },
+  {
+    if = 'test %{app-bundle-id} = ru.keepcoder.Telegram',
+    run = 'move-node-to-workspace 3',
+  },
+  # 4 - Aux
+  {
+    if = 'test %{app-bundle-id} = com.spotify.client',
+    run = 'move-node-to-workspace 4',
+  },
+
+  # Floating
+  {
+    if = 'test %{app-bundle-id} = com.apple.systempreferences',
+    run = 'layout floating',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.apple.calculator',
+    run = 'layout floating',
   },
 ]
 
