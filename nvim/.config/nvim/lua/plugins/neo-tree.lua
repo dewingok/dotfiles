@@ -1,14 +1,13 @@
 return { -- NeoTree File Explorer
-	"nvim-neo-tree/neo-tree.nvim",
-	version = "*",
+	'nvim-neo-tree/neo-tree.nvim',
+	version = '*',
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
-		"MunifTanjim/nui.nvim",
+		'nvim-lua/plenary.nvim',
+		'MunifTanjim/nui.nvim',
 	},
-	cmd = "Neotree",
+	cmd = 'Neotree',
 	keys = {
-		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		{ '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
 	},
 	opts = {
 		filesystem = {
@@ -19,7 +18,7 @@ return { -- NeoTree File Explorer
 			},
 			window = {
 				mappings = {
-					["\\"] = "close_window",
+					['\\'] = 'close_window',
 				},
 			},
 		},
