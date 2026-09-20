@@ -3,7 +3,6 @@ vim.loader.enable()
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.cmd.colorscheme('catppuccin-mocha')
 vim.g.have_nerd_font = true
 
 local opt = vim.opt

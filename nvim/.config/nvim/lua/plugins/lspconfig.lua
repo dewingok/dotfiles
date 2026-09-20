@@ -2,12 +2,12 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'j-hui/fidget',
+      'j-hui/fidget.nvim',
       'mason-org/mason.nvim',
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
-    config = function ()
+    config = function()
       require('fidget').setup {}
 
       --  This function gets run when an LSP attaches to a particular buffer.
@@ -64,7 +64,6 @@ return {
         gopls = {},
         pyright = {},
         -- tsc = {},
-        stylua = {},
         lua_ls = {
           on_init = function(client)
             client.server_capabilities.documentFormattingProvider = false
@@ -100,11 +99,9 @@ return {
         automatic_enable = false,
       }
 
-      -- Ensure the servers and tools above are installed
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        -- You can add other tools here that you want Mason to install
-      })
+      -- Ensure all LSP servers and external tools are installed
+      local ensure_installed = vim.tbl_keys(servers)
+      vim.list_extend(ensure_installed, require 'config.mason')
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

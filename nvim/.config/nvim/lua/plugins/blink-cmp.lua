@@ -1,7 +1,11 @@
 return {
   'saghen/blink.cmp',
-  'L3MON4D3/LuaSnip',
-  config = function ()
+  dependencies = {
+    'saghen/blink.lib',
+    'L3MON4D3/LuaSnip',
+  },
+  build = function() require('blink.cmp').build():pwait() end,
+  config = function()
     require('luasnip').setup {}
 
     require('blink.cmp').setup {

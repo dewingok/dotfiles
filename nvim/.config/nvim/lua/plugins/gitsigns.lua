@@ -1,7 +1,7 @@
 return {
   -- Add gitsigns to gutter
   'lewis6991/gitsigns.nvim',
-  config = function ()
+  config = function()
     local gitsigns = require 'gitsigns'
     gitsigns.setup {
       signs = {
