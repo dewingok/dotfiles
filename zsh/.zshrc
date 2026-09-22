@@ -75,7 +75,7 @@ done
 [ -f "$HOME/.config/zsh/keybindings.zsh" ]  && source "$HOME/.config/zsh/keybindings.zsh"
 
 # Source local plugins or configurations
-zstyle ':plugins:ssh-agent' identities id_ed25519_dewingok id_ed25519_ndewing
+zstyle ':plugins:ssh-agent' identities id_ed25519 id_ed25519_work
 [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
 [ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
