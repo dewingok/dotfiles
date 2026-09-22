@@ -79,6 +79,14 @@ on-window-detected = [
     if = 'test %{app-bundle-id} = com.apple.ActivityMonitor',
     run = 'layout floating',
   },
+  {
+    if = 'test %{app-bundle-id} = com.apple.AppStore',
+    run = 'layout floating',
+  },
+  {
+    if = 'test %{app-bundle-id} = com.apple.finder',
+    run = 'layout floating',
+  },
 ]
 
 [workspace-to-monitor-force-assignment]
