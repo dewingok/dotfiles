@@ -1,0 +1,2 @@
+# Keep the prompt focused on location and Git context.
+format = "$directory$git_branch$git_status$character"
