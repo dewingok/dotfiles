@@ -75,8 +75,11 @@ done
 [ -f "$HOME/.config/zsh/keybindings.zsh" ]  && source "$HOME/.config/zsh/keybindings.zsh"
 
 # Source local plugins or configurations
-zstyle ':plugins:ssh-agent' identities id_ed25519 id_ed25519_work
-[ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
+# Use a session-provided agent when available; otherwise start the custom one.
+if [[ -z "${SSH_AUTH_SOCK:-}" ]] || [[ ! -S "$SSH_AUTH_SOCK" ]]; then
+  zstyle ':plugins:ssh-agent' identities id_ed25519 id_ed25519_work
+  [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
+fi
 [ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
 ### Integrations ###
@@ -123,4 +126,3 @@ if [ "${FNOX_SHELL:-}" != "zsh" ]; then
   eval "$(fnox activate zsh)"
 fi
 # <<< mise:fnox-bootstrap <<<
-
