@@ -4,6 +4,7 @@ after-startup-command = [
   'exec-and-forget ~/.config/borders/bordersrc',
   'layout --workspace 2 --root h_accordion',
   'layout --workspace 3 --root h_accordion',
+  'layout --workspace 4 --root v_accordion',
 ]
 
 start-at-login = true
@@ -12,7 +13,7 @@ auto-reload-config = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-accordion-padding = 48
+accordion-padding = 30
 
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
@@ -77,11 +78,11 @@ on-window-detected = [
 ]
 
 [workspace-to-monitor-force-assignment]
-1 = 'main'                  # Dev
-2 = ['secondary', 'main']   # Ref
-3 = ['secondary', 'main']   # Comms
-4 = ['secondary', 'main']   # Aux
-5 = 'main'                  # Temp
+1 = ['secondary', 'main'] # Dev
+2 = 'main'                # Ref
+3 = 'main'                # Comms
+4 = 'main'                # Aux
+5 = ['secondary', 'main'] # Temp
 
 [key-mapping]
 preset = 'qwerty'

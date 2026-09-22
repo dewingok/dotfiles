@@ -5,7 +5,8 @@ return {
     -- Icons
     require('mini.icons').setup()
     MiniIcons.mock_nvim_web_devicons()
-    -- Simple and easy statusline.
+
+    -- Statusline.
     local catppuccin = require 'catppuccin'
     local palette = require('catppuccin.palettes').get_palette()
     local background = catppuccin.options.transparent_background and 'NONE' or palette.mantle
@@ -76,6 +77,7 @@ return {
       use_icons = vim.g.have_nerd_font,
       content = { active = bubble_content },
     }
+
     -- Start page
     require('mini.starter').setup()
 
@@ -94,6 +96,9 @@ return {
 
     -- Trim trailing space
     require('mini.trailspace').setup()
+
+    -- Align
+    require('mini.align').setup()
 
     -- Better diff view and overlay
     require('mini.diff').setup {
