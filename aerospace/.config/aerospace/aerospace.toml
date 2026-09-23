@@ -2,8 +2,8 @@ config-version = 2
 
 after-startup-command = [
   'exec-and-forget ~/.config/borders/bordersrc',
-  'layout --workspace 2 --root h_accordion',
-  'layout --workspace 3 --root h_accordion',
+  'layout --workspace 2 --root v_accordion',
+  'layout --workspace 3 --root v_accordion',
   'layout --workspace 4 --root v_accordion',
 ]
 
