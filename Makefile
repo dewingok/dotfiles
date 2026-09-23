@@ -13,50 +13,50 @@ setup: dirs brew-bundle stow tpm mise-install check
 brew-bundle:
 	@if command -v brew >/dev/null 2>&1; then \
 		brew bundle --file=./Brewfile; \
-	else \
+		else \
 		echo "Homebrew not found. Install Homebrew first: https://brew.sh"; \
 		exit 1; \
-	fi
+		fi
 
 mise-install:
 	@if command -v mise >/dev/null 2>&1; then \
 		mise install; \
-	else \
+		else \
 		echo "mise not found yet; skipping 'mise install'."; \
-	fi
+		fi
 
 check:
 	@echo "Running post-bootstrap checks..."
 	@for cmd in stow tmux nvim mise; do \
 		command -v $$cmd >/dev/null 2>&1 || { echo "Missing required command: $$cmd"; exit 1; }; \
-	done
+		done
 	@for tool in uv pnpm; do \
 		mise which $$tool >/dev/null 2>&1 || { echo "Missing required mise tool: $$tool"; exit 1; }; \
 		mise exec -- $$tool --version >/dev/null 2>&1 || { echo "Unable to run $$tool via mise"; exit 1; }; \
-	done
+		done
 	@echo "Bootstrap checks passed."
 
 tpm:
 	@if [ -d "$(TPM_DIR)/.git" ]; then \
 		echo "TPM already installed; skipping clone."; \
-	else \
+		else \
 		git clone https://github.com/tmux-plugins/tpm "$(TPM_DIR)"; \
-	fi
+		fi
 
 dirs:
 	@if [ ! -d ~/.ssh ]; then \
 		mkdir -p ~/.ssh; \
 		chmod 0700 ~/.ssh; \
-	else \
+		else \
 		echo "~/.ssh already exists; skipping."; \
-	fi
+		fi
 	@for dir in "$(XDG_CONFIG_HOME)/git" "$(XDG_CONFIG_HOME)/tmux" "$(XDG_CONFIG_HOME)/zsh" "$(HOME)/.local/bin"; do \
 		if [ ! -d $$dir ]; then \
-			mkdir -p "$$dir"; \
+		mkdir -p "$$dir"; \
 		else \
-			echo "$$dir already exists; skipping."; \
+		echo "$$dir already exists; skipping."; \
 		fi; \
-	done
+		done
 
 stow: dirs
 	stow $(STOW_PACKAGES) -vt ~
