@@ -2,17 +2,21 @@
 minimum_release_age = "2d"
 
 [tools]
+go = "1.27"
 node = "24"
 python = "3.13"
-go = "1.27"
+
+age = "latest"
+ast-grep = "latest"
+bun = "latest"
+fnox = "latest"
 pnpm = "11"
 uv = "latest"
-bun = "latest"
-age = "latest"
-fnox = "latest"
 vault = "latest"
+
 "npm:markdownlint-cli" = "latest"
 "npm:yaml-language-server" = "latest"
+"npm:@nanonets/graft" = { version = "latest", allow_builds = ["tree-sitter-kotlin"] }
 
 [tasks.go-tools]
 run = """
