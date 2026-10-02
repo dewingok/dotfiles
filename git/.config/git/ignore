@@ -18,3 +18,4 @@ Thumbs.db
 # Agents
 .agent/
 **/.claude/settings.local.json
+**/.claude
