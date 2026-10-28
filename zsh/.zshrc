@@ -98,23 +98,21 @@ zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept,ctrl-n:down,c
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-# Activate mise-managed tool shims for this shell.
 if (( $+commands[mise] )); then
   eval "$(mise activate zsh)"
 fi
 
-# Google Cloud Completion and PATH setup
-if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'; fi
+if (( $+commands[wt] )); then
+  eval "$(command wt config shell init zsh)"
+fi
 
-# pnpm
 export PNPM_HOME="/Users/ndewing/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
-#
-# >>> mise:fnox-bootstrap >>> managed by mise - do not edit between markers
+
+# mise & fnox
 case ":$PATH:" in
   *":$HOME/.local/bin:"*) ;;
   *) export PATH="$HOME/.local/bin:$PATH" ;;
@@ -125,4 +123,3 @@ fi
 if [ "${FNOX_SHELL:-}" != "zsh" ]; then
   eval "$(fnox activate zsh)"
 fi
-# <<< mise:fnox-bootstrap <<<

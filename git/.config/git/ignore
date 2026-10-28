@@ -19,3 +19,5 @@ Thumbs.db
 .agent/
 **/.claude/settings.local.json
 **/.claude
+/graft/
+.ignore

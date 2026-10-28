@@ -4,3 +4,6 @@
 export ZSHRC="${ZDOTDIR:-$HOME}/.zshrc"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=$(which nvim 2>/dev/null || which vim 2>/dev/null)
+
+[[ -d "/opt/podman/bin" ]] && export PATH="$PATH:/opt/podman/bin"
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
