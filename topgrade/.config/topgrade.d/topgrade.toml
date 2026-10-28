@@ -1,21 +1,29 @@
 [misc]
-# show_skipped = true
 skip_notify = false
-disable = ["node", "yarn", "pnpm", "pip3", "microsoft_office", "skills"]
+cleanup = true
+first = [
+  "system",
+  "brew_formula",
+  "brew_cask",
+  "mise"
+]
+disable = [
+  "gem",
+  "microsoft_office",
+  "node",
+  "pip3",
+  "pnpm",
+  "ruby_gems",
+  "skills",
+  "yarn"
+]
 
-# Git
 [git]
 repos = [
   "~/src/*/*/*",
 ]
+fetch_only = true
 max_concurrency = 1
 
-# macOS
 [brew]
 autoremove = true
-
-# Custom commands
-# [commands]
-# "uv-tools" = "uv tool upgrade --all"
-# "pip-audit" = "pip audit || true"
-# "npm-audit" = "npm audit --omit=dev || true"
