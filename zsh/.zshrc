@@ -80,6 +80,10 @@ if [[ -z "${SSH_AUTH_SOCK:-}" ]] || [[ ! -S "$SSH_AUTH_SOCK" ]]; then
   zstyle ':plugins:ssh-agent' identities id_ed25519 id_ed25519_work
   [ -f "$HOME/.config/zsh/ssh-agent.zsh" ] && source "$HOME/.config/zsh/ssh-agent.zsh"
 fi
+# macOS's session agent starts empty; load Keychain-stored keys so commit signing works before any ssh connection.
+if [[ "$OSTYPE" == darwin* ]] && ! ssh-add -l &>/dev/null; then
+  ssh-add --apple-load-keychain -q 2>/dev/null
+fi
 [ -f "$HOME/.config/zsh/local.zsh" ] && source "$HOME/.config/zsh/local.zsh"
 
 ### Integrations ###
