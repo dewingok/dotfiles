@@ -36,6 +36,7 @@ return {
   },
   { -- Seemless navigation between Nvim and Tmux.
     'alexghergh/nvim-tmux-navigation',
+    cond = vim.env.HERDR_ENV ~= '1' or vim.env.TMUX ~= nil,
     config = function()
       local nvim_tmux_nav = require 'nvim-tmux-navigation'
       nvim_tmux_nav.setup {

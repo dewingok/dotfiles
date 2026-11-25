@@ -5,3 +5,4 @@ font-size = 14
 font-thicken = true
 font-thicken-strength = 255
 theme = "Catppuccin Mocha"
+initial-command = /bin/zsh -lc 'exec herdr'

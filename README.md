@@ -21,6 +21,14 @@ cd ~/.dotfiles
 make install
 ```
 
+## Herdr
+
+Open Neovim once inside Herdr to install the pinned navigation plugin. Then link the same checkout from a Herdr pane.
+
+```sh
+herdr plugin link "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/lazy/herdr-splits.nvim"
+```
+
 ## Support 🆘
 
 There is no stinking support. But, if something breaks:
